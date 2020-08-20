@@ -1,4 +1,5 @@
-public class PruebaAutomovil{
+public class PruebaAutomovil {
+	
 	public static void main (String [] args){
 		Automovil nissan = new Automovil(67);
 		int velocidadActual = nissan.getVelocidad();
@@ -12,8 +13,5 @@ public class PruebaAutomovil{
 		fiat.acelerar();
 		fiat.acelerar();
 		System.out.println("Fiat - Velocidad: " + fiat.getVelocidad());
-
-
-
 	}
 }
