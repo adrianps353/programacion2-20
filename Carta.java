@@ -1,6 +1,6 @@
 public class Carta{
 	// Atributos
-
+ 
 	// Para definir un tipo de dato:
 	// Declaramos el valor privado
 	// Definir qué tipo de dato es
