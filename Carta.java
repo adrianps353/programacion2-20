@@ -18,8 +18,6 @@ public class Carta{
 		simbolo = simboloParametro;
 	}
 
-
-
 	public void setNumero(int numeroNuevo){
 		numero = numeroNuevo;
 	}
@@ -43,8 +41,31 @@ public class Carta{
 	// 4. Qué parámetros necesita (que necesita para que el método funcione)
 	public void imprimir(){
 		String contenidoDeLaCarta = "La carta es: ";
-		contenidoDeLaCarta = contenidoDeLaCarta + numero + " de " + simbolo;
+		contenidoDeLaCarta = contenidoDeLaCarta + convertirNumeroALetra() + " de " + simbolo;
 		System.out.println(contenidoDeLaCarta);
+	}
+
+	public String convertirNumeroALetra(){
+		// Usamos el atributo
+		// As, J, Q, K, el resto
+		String resultado = "";
+		if (numero == 11){// J
+			resultado = "J";
+		}
+		else if (numero == 12){ //Q
+			resultado = "Q";
+		}
+		else if (numero == 13){//K
+			resultado = "K";
+		}
+		else if (numero == 1){// As
+			resultado = "As";
+		}
+		else{
+			resultado += numero;
+		}
+
+		return resultado;
 	}
 
 }

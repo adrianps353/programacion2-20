@@ -1,7 +1,7 @@
 public class PruebaSwitch{
 
 	public static void main (String args[]){
-		int valor = 100;
+		int valor = 0;
 
 		switch(valor){
 			case 0:

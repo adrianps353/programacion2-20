@@ -1,7 +1,7 @@
 public class PruebaIf{
 	
 	public static void main (String[] args){
-		double nota = 30;
+		double nota = 60;
 
 		if (nota >= 67.5){
 			System.out.println("El estudiante pasa el curso");
