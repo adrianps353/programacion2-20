@@ -1,6 +1,6 @@
 public class Mazo{
-	// usar un for
 	// usar un ciclo dentro de otro
+	// usar un for
 
 	public Mazo(){
 		for (int j = 0; j < 4 ; j++){
