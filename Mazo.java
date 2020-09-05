@@ -1,41 +1,27 @@
 public class Mazo{
-	// usar un ciclo dentro de otro
-	// usar un for
 
 	public Mazo(){
-		for (int j = 0; j < 4 ; j++){
-			for (int i = 1; i <= 13; i++){
-				Carta carta = new Carta(i, this.retornarSimbolo(j));
-				carta.imprimir();
-			}	
-		}
-		/*
-		for (int i = 1; i <= 13; i++){
-			Carta carta = new Carta(i, "Espadas");
-			carta.imprimir();
-		}	
-		for (int i = 1; i <= 13; i++){
-			Carta carta = new Carta(i, "Diamantes");
-			carta.imprimir();
-		}
-		for (int i = 1; i <= 13; i++){
-			Carta carta = new Carta(i, "Corazones");
-			carta.imprimir();
-		}
-		for (int i = 1; i <= 13; i++){
-			Carta carta = new Carta(i, "Treboles");
-			carta.imprimir();
-		}*/
+		this.crearCartas();
 	}
 
-	public String retornarSimbolo(int valor){
+	public void crearCartas(){
+		// ciclo que itere 13
+		for (int j = 0; j < 4; j++){
+			for (int i = 1; i < 14; i++){
+				Carta carta = new Carta(i, obtenerSimbolo(j));
+				carta.imprimir();
+			}
+		}
+	}
+
+	public String obtenerSimbolo(int valor){
 		String resultado = "";
 		switch(valor){
 			case 0:
-				resultado = "Diamantes";
+				resultado = "Corazones";
 			break;
 			case 1:
-				resultado = "Corazones";
+				resultado = "Diamantes";
 			break;
 			case 2:
 				resultado = "Espadas";

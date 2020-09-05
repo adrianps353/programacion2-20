@@ -49,22 +49,23 @@ public class Carta{
 		// Usamos el atributo
 		// As, J, Q, K, el resto
 		String resultado = "";
-		if (numero == 11){// J
-			resultado = "J";
-		}
-		else if (numero == 12){ //Q
-			resultado = "Q";
-		}
-		else if (numero == 13){//K
-			resultado = "K";
-		}
-		else if (numero == 1){// As
-			resultado = "As";
-		}
-		else{
-			resultado += numero;
-		}
+		switch(numero){
+			case 11:
+				resultado = "J";
+			break;
+			case 12:
+				resultado = "Q";
+			break;
+			case 13:
+				resultado = "K";
+			break;
+			case 1:
+				resultado = "As";
+			break;
+			default:
+				resultado += numero;
 
+		}
 		return resultado;
 	}
 
