@@ -57,6 +57,51 @@ public class Calculadora{
 		return resultado;
 	}
 
+	public double calcularPotencia(double base, int exponente){
+		double resultado = 1;
+		for (int i = 0 ; i < exponente; i++){
+			resultado *= base;
+		}
+		return resultado;
+	}
+
+	public double calcularSeno(int x, int n){
+		int signo = 1;
+		int contador = 1;
+		double resultado = 0;
+		if (n % 2 == 0){
+			n++;
+		}
+		while(contador <= n){
+			double numerador = calcularPotencia(x, contador);
+			int denominador = calcularFactorial(contador);
+			double fraccion = numerador/denominador * signo;
+			resultado += fraccion;
+			signo *= -1;
+			contador += 2;
+		}
+		return resultado;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public double calcularCoseno(int x, int n){
 		double resultado = 1;
 		int contador = 2;
@@ -83,6 +128,20 @@ public class Calculadora{
 			numero = numero / 10;
 		}
 		return cantidad;
+	}
+
+	public int multiplicacionBessie(int numero, int numero2){
+		int temporal = numero;
+		int resultado = 0;
+		while(temporal != 0){ // 
+			int temporal2 = numero2;
+			while(temporal2 !=0){
+				resultado += ((temporal%10) * (temporal2%10));
+				temporal2 = temporal2 / 10;
+			}
+			temporal = temporal/10;
+		}
+		return resultado;
 	}
 
 	public boolean calcularArmstrong(int numero){
@@ -123,7 +182,7 @@ public class Calculadora{
 			}
 			String resultados = "Mayor: "+ mayor + ", menor: "+ menor;
 			System.out.println(resultados);
-			JOptionPane.showMessageDialog(null, resultados, "Resultados", 1);
+			JOptionPane.showMessageDialog(null, resultados, "Resultados", JOptionPane.INFORMATION_MESSAGE);
 		}
 	}
 
@@ -131,10 +190,17 @@ public class Calculadora{
 		Calculadora calcu1 = new Calculadora();
 		//System.out.println("5: "+ calcu1.esPrimo(5));
 		//System.out.println("6: "+ calcu1.esPrimo(6));
-		System.out.println(calcu1.calcularFactorial(5));
+		/*System.out.println(calcu1.calcularFactorial(5));
 		System.out.println(calcu1.calcularPotencia(2,4));
 		calcu1.imprimirNumerosArmstrong(500000);
+		calcu1.imprimirMayorYMenor();*/
+
+		System.out.println(calcu1.calcularPotencia(2.1, 4));
+		System.out.println(calcu1.calcularFactorial(4));
+
+		System.out.println(calcu1.multiplicacionBessie(123,45));
 		calcu1.imprimirMayorYMenor();
+
 	}
 
 }
