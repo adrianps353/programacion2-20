@@ -3,10 +3,8 @@
 | ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/jciccio/programacion2-20.svg?style=for-the-badge)      | [![HitCount](http://hits.dwyl.com/jciccio/programacion2-20.svg)](http://hits.dwyl.com/jciccio/programacion2-20) | Java|
 
 # Programación 2-20
-
 ## Material visto en clase
 Ejemplos tomados del código fuente generado en las distintas lecciones.
-
 
 ### Comentarios
 Elementos omitidos por el compilador a la hora de transformar el código fuente en código binario/ejecutable. Utilizado por el programador para comprender mejor qué se está codificando
@@ -43,8 +41,8 @@ Elementos omitidos por el compilador a la hora de transformar el código fuente 
    //2. Qué (tipo de dato) quiero que retorne el método  
    //3. Cómo se llama el método
    //4. Qué necesito que reciba el método para funcionar
-   public void setSimbolo(String simboloParametro){
-      simbolo = simboloParametro;
+   public void setPalo(String paloParametro){
+      palo = paloParametro;
    }
   ```
 
@@ -73,3 +71,301 @@ Persona persona1 = new Persona();
 | Double.parseDouble(hilera)        | Conversión a número real  | Double.parseDouble("12.4") --> 12.4
 | Integer.parseInt(hilera)        | Conversión a número entero  | Integer.parseInt("15") --> 15
 
+### Solicitud de datos al usuario
+
+* Consola
+
+Import necesario:
+```java
+import java.util.Scanner;
+```
+Ejemplo:
+```java
+Scanner scanner = new Scanner(System.in);
+System.out.println("Digite su nombre: ");
+String nombre = scanner.nextLine();
+```
+* JOptionPane (utilizando una ventana emergente:
+
+Import necesario:
+```java
+import javax.swing.JOptionPane;
+```
+Ejemplo:
+```java
+String nombre = JOptionPane.showInputDialog("Digite su nombre");
+```
+
+### Manejo de excepciones
+
+Uso de los bloques try{...}catch(Exception e){...}
+
+```java
+try{
+  // código propenso a fallos
+}
+catch (Exception e) 
+{
+  // acción a tomar si se encuentra un error.
+}
+```
+
+Ejemplo con dos bloques catch:
+
+```java
+int valor = 0;
+String numeroHilera =  JOptionPane.showInputDialog (“Digite un número”);
+try{
+   valor = Integer.parseInt (numeroHilera);
+}
+catch (NumberFormatException e){
+   System.out.println (“El valor digitado no es un número.”);
+}
+catch (Exception e){
+   System.out.println (“Ocurrió un error inesperado.”);
+}
+```
+
+Note que se codifica primero el bloque con la excepción más específica `NumberFormatException` y luego el bloque con la excepción general en este caso.
+
+Èjemplo visto en clase:
+```java
+public int convertirStringAInt(String valor){
+   int numero = 0;
+   try{
+      numero = Integer.parseInt(valor);
+   }
+   catch(NumberFormatException e){
+      System.out.println("Ocurrio un error al convertir: " + valor);
+   }
+   return numero;
+}
+```
+
+### Sobrecarga de métodos y constructores
+
+La firma de un método está compuesta por su nombre y los tipos de datos de los parámetros que recibe (en orden).
+
+La sobrecarga consiste en tener métodos con el mismo nombre pero con distintos parámetros. Java utiliza la cantidad de parámetros, junto con sus tipos para determinar cuál es el método correcto que debe ser invocado.
+
+De igual forma, en Java se pueden sobrecargar los constructores de una clase (permitiendo tener varios). Esto se llama sobrecarga de constructores.
+
+Ejemplos vistos en clase:
+
+Sobrecarga de métodos (clase Calculadora.java)
+```java
+public int sumar(int valor1, int valor2){
+   return valor1 + valor2;
+}
+
+public int sumar(int valor1, int valor2, int valor3){
+   return valor1 + valor2 + valor3;
+}
+
+public double sumar(double v1, double v2){
+   double resultado = v1+ v2;
+   return resultado;
+}
+
+public double sumar(int v1, double v2){
+   return v1 + v2;
+}
+
+public double sumar(double v1, int v2){
+   return v1 + v2;
+}
+```
+
+Sobrecarga de constructores (clase Carta.java)
+
+```java
+public Carta() {
+   palo = "Diamantes";
+   numero = 3;
+}
+
+public Carta(int numero, String palo){
+   this.numero = numero;
+   this.palo = palo;
+}
+```
+
+### Estructuras de control (__if__, __if/else__)
+
+  * Operadores relacionales (and: __&&__, or: __||__, xor: __^__, not: __!__)
+  
+  * Operadores lógicos (__>__, __>=__,__<__,__<=__,__==__)
+  
+  * Orden precedencia:
+  
+  | Orden        | Tipo           | Operador|
+  | ------------- |:-------------:| :-------------:|
+  |1|Posfijos |( )|
+  |2|Multiplicativos |*, /, %, //|
+  |3|Aditivos |+,-|
+  |4|Unarios |x++, x--|
+  |5|Relacionales |>, <, <=, >=|
+  |6|Igualdad |==|
+  |7|AND | and|
+  |8|OR | or|
+  |9|Asignación |=, +=, -=, *=, /=,%= …|
+
+
+#### Estructura if 
+
+Ejemplo tomado de la clase carta, convierte un número entero que representa una carta en una hilera de caracters con su respectivo valor.
+```java
+public String convertirNumeroCartaIf(){
+   String valorCarta = "";
+   if (numero == 1){
+      valorCarta = "As";
+   }
+   else {
+      if (numero == 11){
+         valorCarta = "J";
+      }
+      else{
+         if (numero == 12){
+            valorCarta = "Q";
+         }
+         else{
+            if (numero == 13){
+               valorCarta = "K";
+            }
+            else{
+               valorCarta += numero;
+            }   
+         } 
+      } 
+   }
+   return valorCarta;
+}
+```
+
+#### Estructura switch
+
+Ejemplo anterior codificado utilizando la estructura switch
+
+```java
+// Retorne J Q K As o el numero como String
+public String convertirNumeroCarta(){
+   String valorCarta = "";
+   switch(numero){
+      case 11:
+         valorCarta = "J";
+      break;
+      case 12:
+         valorCarta = "Q";
+      break;
+      case 13:
+         valorCarta = "K";
+      break;
+      case 1:
+         valorCarta = "As";
+      break;
+      default:
+         valorCarta += this.numero;
+   }
+   return valorCarta;
+}
+```
+
+### Estructuras de repetición
+
+![alt text](screenshots/ciclos.jpg "Ejemplo gráfico visto en clases")
+
+### Ciclo while
+
+Ejemplo tomado de la clase Matemáticas
+
+```java
+public double calcularPromedioWhile(){
+  double suma = 0;
+  int n = 0; // iteraciones que se harán y servirá como condición de parada
+
+  while(n < 5){
+    suma += interfazUsuario.solicitarNumeroEntero("Digite un numero (while)");
+    n++; // cambio de condición
+  }
+  return suma/5;
+}
+```
+
+### Ciclo do - while
+
+Ejemplo tomado de la clase Matemáticas
+
+
+```java
+public double calcularPromedioDoWhile(){
+  double suma = 0;
+  int n = 0;
+
+  do {
+    suma += interfazUsuario.solicitarNumeroEntero("Digite un numero (do-while)");
+    n++;
+  }while(n < 5);
+  return suma/5;
+}
+```
+### Ciclo for
+
+Ejemplo tomado de la clase Matemáticas
+
+
+```java
+public double calcularPromedioFor(){
+  double suma = 0;
+
+  for (int  n = 0 ; n < 5 ; n++){
+    suma += interfazUsuario.solicitarNumeroEntero("Digite un numero (for)");
+  }
+
+  return suma /5;
+}
+```
+
+### Arreglos
+
+Ejemplos vistos en clase:
+
+```java
+//Declaración por extensión:
+int [] arreglo1 = {10,20,30,40,50};
+
+int [] arreglo2 = new int[5]
+// Genera un arreglo de 5 celdas [0,0,0,0,0]
+
+int tamanyo = arreglo.length // -> retorna el tamaño del arreglo
+
+// Las celdas se indexan a partir de 0, por lo que las celdas
+// siempre van desde [0,tamanyo[
+
+// Acceso a una celda:
+int y = arreglo1[1] // retorna un 20
+
+// Asignación a una celda:
+arreglo2[2] = 31;
+// cambia el arreglo a: [0,0,31,0,0]
+```
+
+Paso argumentos a un programa:
+
+```java
+public static void main (String[] args){
+    System.out.println("args.length " + args.length);
+    if (args.length > 0){
+      System.out.println(args[0]);  
+      int x = Integer.parseInt(args[0]);
+      int y = Integer.parseInt(args[1]);
+      int suma = x + y;
+      System.out.println("La suma es: " + suma);
+    }
+    ...
+```
+
+### Valores por referencia y copia
+
+  Al invocar un método, las variables de tipo primitivo, se invocan por copia.
+  Los objetos (arreglos, clases, etc.) se envían como una referencia a su ubicación en
+  memoria, por tanto si se modifican dentro del método, se modificará las variables que apunten a la misma referencia.
