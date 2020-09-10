@@ -1,7 +1,10 @@
-| Tamaño del repositorio        | Hits           | Lenguaje utilizado|
-| ------------- |:-------------:| :-------------:| 
-| ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/jciccio/programacion2-20.svg?style=for-the-badge) |[![HitCount](http://hits.dwyl.com/jciccio/programacion2-20.svg)](http://hits.dwyl.com/jciccio/programacion2-20)| Java|
+| Tamaño del repositorio        | Lenguaje utilizado|
+| ------------- | :-------------:| 
+| ![GitHub repo size in bytes](https://img.shields.io/github/repo-size/jciccio/programacion2-20.svg?style=for-the-badge) | Java|
 
+![social](https://img.shields.io/twitter/follow/joseacco12?style=social)
+[![HitCount](http://hits.dwyl.com/jciccio/programacion2-20.svg)](http://hits.dwyl.com/jciccio/programacion2-20)
+[![HitCount](http://hits.dwyl.io/jciccio/programacion2-20.svg)](http://hits.dwyl.com/jciccio/programacion2-20.svg)
 
 
 # Programación 2-20
