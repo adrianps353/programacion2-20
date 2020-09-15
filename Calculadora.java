@@ -4,7 +4,24 @@ public class Calculadora{
 	
 	public double multiplicar(double valor1, double valor2){
 		double resultado = valor2 * valor1;
+		System.out.println("multiplicar(double , double )");
 		return resultado;
+	}
+
+	public int multiplicar(int valor1, int valor2){
+		System.out.println("multiplicar(int , int )");
+		return valor1*valor2;
+	}
+
+	public double multiplicar(double valor1, int valor2){
+		System.out.println("multiplicar(double , int )");
+		return valor1*valor2;
+	}
+
+
+	public double multiplicar(int valor1, int valor2, int valor3){
+		System.out.println("multiplicar(int , int, int)");
+		return valor1*valor2*valor3;
 	}
 
 	public int obtenerElMayor(int a, int b, int c){
@@ -82,25 +99,6 @@ public class Calculadora{
 		}
 		return resultado;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	public double calcularCoseno(int x, int n){
 		double resultado = 1;
@@ -200,6 +198,10 @@ public class Calculadora{
 
 		System.out.println(calcu1.multiplicacionBessie(123,45));
 		calcu1.imprimirMayorYMenor();
+
+		System.out.println(calcu1.multiplicar(5,6));
+		System.out.println(calcu1.multiplicar(5,6,7));
+		System.out.println(calcu1.multiplicar(5.1,6.21));
 
 	}
 
