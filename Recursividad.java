@@ -23,7 +23,7 @@ public class Recursividad{
 	public int calcularFibonacci(int n){
 		int resultado = 0;
 		// Casos triviales?
-		if(n == 0){
+		if(n <= 0){
 			System.out.println("En el caso base: " + n);
 			resultado = 0;
 		}
@@ -31,7 +31,7 @@ public class Recursividad{
 			System.out.println("En el caso base: " + n);
 			resultado = 1;
 		}// Casos recursivos?
-		else if(n > 1){
+		else{
 			System.out.println("En el caso recursivo con n: " + n);
 			resultado = calcularFibonacci(n-1) + calcularFibonacci(n-2);
 		}
