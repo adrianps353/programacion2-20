@@ -10,6 +10,16 @@ public class EjemploMatriz{
 		System.out.println();
 	}
 
+	public void imprimir(char [][] matriz){
+		for(int f = 0 ; f < matriz.length; f++){
+			for(int c = 0; matriz[f] != null && c < matriz[f].length; c++){
+				System.out.print(matriz[f][c] + "\t");
+			}
+			System.out.println();
+		}
+		System.out.println();
+	}
+
 	public void imprimirArreglo(int [] arreglo){
 		for (int i = 0 ; i < arreglo.length; i++){
 			System.out.print(arreglo[i] + " ");
@@ -57,6 +67,57 @@ public class EjemploMatriz{
 		return resultado;
 	}
 
+	// A B C
+	// D E F
+	// G H I
+	// ... 
+	// Y Z A
+	public char[][] crearMatrizLetras(int filas, int columnas){
+		char [] letras = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+		char [][] resultado = null;
+		int contador = 0;
+		if (filas > 0 && columnas > 0){
+			resultado = new char [filas][columnas];
+			for (int f = 0 ; f < resultado.length; f++){
+				for (int c = 0 ; c < resultado[f].length; c++){
+					resultado[f][c] = letras[contador%letras.length];
+					contador++;
+				}
+			}
+		}
+		return resultado;
+	}
+
+	public char[][] crearMatrizLetrasV2(int filas, int columnas){
+		String letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		char [][] resultado = null;
+		int contador = 0;
+		if (filas > 0 && columnas > 0){
+			resultado = new char [filas][columnas];
+			for (int f = 0 ; f < resultado.length; f++){
+				for (int c = 0 ; c < resultado[f].length; c++){
+					resultado[f][c] = letras.charAt(contador%letras.length() );
+					contador++;
+				}
+			}
+		}
+		return resultado;
+	}
+
+	public char[][] crearMatrizLetrasV3(int filas, int columnas){
+		char [][] matriz = new char[filas][columnas];
+		// 65 -> A
+		int contador = 0;
+		for (int f = 0; f < matriz.length; f++){
+			for (int c =0; c < matriz[f].length; c++){
+				matriz[f][c] = (char)(65 + (contador%26));
+				contador++;
+			}
+		}
+		return matriz;
+	}
+
+ 
 
 	public static void main(String [] args){
 		EjemploMatriz em = new EjemploMatriz();
@@ -127,5 +188,28 @@ public class EjemploMatriz{
 		arreglo = em.obtenerFila(matrizExtension2, 3);
 		if (arreglo != null)
 			em.imprimirArreglo(arreglo);
+
+
+		char[][] matrizLetras = em.crearMatrizLetras(7,5);
+		em.imprimir(matrizLetras);
+
+		String hilera ="Hola Mundo";
+		System.out.println(hilera.charAt(0));
+		System.out.println(hilera.charAt(1));
+		System.out.println(hilera.charAt(2));
+		System.out.println(hilera.charAt(3));
+		System.out.println(hilera.charAt(4));
+		System.out.println(hilera.charAt(5));
+		System.out.println();
+		matrizLetras = em.crearMatrizLetrasV2(7,5);
+		em.imprimir(matrizLetras);
+
+
+		int num = 66;
+		char numA = (char)num;
+		System.out.println(numA);
+
+		em.imprimir(em.crearMatrizLetrasV3(7,8));
+
 	}	
 }

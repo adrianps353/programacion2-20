@@ -50,16 +50,16 @@ public class MatrizG9{
 		return matriz;
 	}
 
-		public char [][] crearMatrizLetrasV2(int filas, int columnas){
+	public char [][] crearMatrizLetrasV2(int filas, int columnas){
 		char [][] matriz = new char [filas][columnas];
 		int letraEntero = 0;
 		for(int f = 0; f < matriz.length; f++){
 			for (int c = 0 ; c < matriz[f].length; c++){
-				matriz[f][c] = (char)(letraEntero%26 + 65);
-				letraEntero++;
 				// Son 26 letras
 				// % 26 -> 0 - 25
 				// ? [65 , 65 + 26 [
+				matriz[f][c] = (char)(letraEntero%26 + 65);
+				letraEntero++;
 			}
 		}
 		return matriz;
