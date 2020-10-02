@@ -1,8 +1,8 @@
-public class BuscaminasG6{
+public class Buscaminas{
 	private int [][] tablero;
 	private int minas;
 
-	public BuscaminasG6(int filas, int columnas, int minas){
+	public Buscaminas(int filas, int columnas, int minas){
 		tablero = new int[filas][columnas];
 		this.minas = minas;
 	}
@@ -38,14 +38,17 @@ public class BuscaminasG6{
 						if (nuevaFila >= 0 && nuevaFila < tablero.length && 
 							nuevaColumna >= 0 && nuevaColumna < tablero[f].length &&
 							tablero[nuevaFila][nuevaColumna] != -1){
+
+
 							tablero[nuevaFila][nuevaColumna] += 1;
+						
+
 						}
 						contador++;
 					}
 				}
 			}
 		}
-
 	}
 
 	public void imprimir(){
@@ -59,7 +62,7 @@ public class BuscaminasG6{
 	}
 
 	public static void main (String [] args){
-		BuscaminasG6 buscaminas = new BuscaminasG6(6,5,10);
+		Buscaminas buscaminas = new Buscaminas(6,5,10);
 		buscaminas.imprimir();
 		buscaminas.colocarMinas();
 		buscaminas.imprimir();
