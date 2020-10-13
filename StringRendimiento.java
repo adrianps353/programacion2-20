@@ -13,9 +13,7 @@ public class StringRendimiento{
 
 		// Dinámico
 		StringBuilder x = new StringBuilder("Hola");
-
 		Instant tiempoInicial = Instant.now();
-
 		for (int i = 0 ; i < 10000; i++){
 			//x += "hola";
 			x.append("hola");
