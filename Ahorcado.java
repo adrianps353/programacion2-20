@@ -83,5 +83,4 @@ public class Ahorcado {
 		//System.out.println(ahorcado);
 		ahorcado.jugar();
 	}
-
 }
