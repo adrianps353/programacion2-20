@@ -76,7 +76,14 @@ public class Ahorcado {
 			palabra.replace(palabra.indexOf("le"),palabra.indexOf("le")+2, "..");	
 		}
 		System.out.println(palabra);
-		Ahorcado ahorcado = new Ahorcado("paralelepipedo");
+
+
+		LectorDeArchivos lector = new LectorDeArchivos("palabrasSecretas.txt");
+		String palabras = lector.leerArchivo();
+		//System.out.println(palabras);
+		String [] palabraArchivo = palabras.split("\r\n");
+		int celdaAleatoria = (int)(Math.random()*palabraArchivo.length);
+		Ahorcado ahorcado = new Ahorcado(palabraArchivo[celdaAleatoria]);
 		//System.out.println(ahorcado);
 		//System.out.println(ahorcado.buscarLetra("p"));
 		//System.out.println(ahorcado.buscarLetra("z"));
