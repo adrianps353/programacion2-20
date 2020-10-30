@@ -71,6 +71,42 @@ public class ListaSimplementeEnlazada{
 		return contenido;
 	}
 
+	public boolean insertar(int posicion, int valor){
+		// Puede ser el primer elemento
+		boolean insertado = false;
+		if (posicion == 0){
+			this.agregarAlInicio(valor);
+			insertado = true;
+		}
+		// Uno al medio
+		// Elemento final
+		else if (posicion > 0 && this.primero != null){
+			// Debemos encontrar el anterior (nodo)
+			int posicionActual = 0;
+			Nodo actual = this.primero;
+			while(actual != null && posicionActual + 1 != posicion){
+				posicionActual++;
+				actual = actual.siguiente;
+			}	
+			if (actual != null && posicionActual+1 == posicion){
+				Nodo nuevo = new Nodo(valor);
+				Nodo anterior = actual;
+				nuevo.siguiente = anterior.siguiente;
+				anterior.siguiente = nuevo;
+				insertado = true;
+			}
+		}
+		return insertado;
+	}
+
+	public boolean borrar (int posicion){
+		//Casos para borrar nodo:
+		// Si es el primer elemento (0) -> hay que actualizar el puntero al inicio
+		// Si es un nodo intermedio
+		// Si es un nodo final
+		return false;
+	}
+
 	public static void main (String [] args){
 		ListaSimplementeEnlazada lista = new ListaSimplementeEnlazada();
 		lista.agregarAlInicio(3);
