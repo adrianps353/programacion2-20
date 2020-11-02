@@ -60,6 +60,29 @@ public class ListaSimplementeEnlazada{
 		return asignado;
 	}
 
+	public boolean agregarEnPosicion(int posicion, int valor){
+		int posicionActual = 0;
+		Nodo actual = this.primero;
+		boolean asignado = false;
+
+		if(posicion >= 0){
+			while(actual != null && posicionActual != posicion){
+				actual = actual.siguiente;
+				posicionActual++;
+			}
+			if (actual != null){
+				Nodo nuevo = new Nodo(valor);
+				Nodo temporal = actual.siguiente; // para no perder el resto de la lista
+				actual.siguiente = nuevo;
+				nuevo.siguiente = temporal;
+				asignado = true;
+			}
+		}
+
+		return asignado;
+
+	}
+
 	public String toString(){
 		String contenido = "";
 		Nodo actual = this.primero;
@@ -84,6 +107,7 @@ public class ListaSimplementeEnlazada{
 		System.out.println(lista);
 
 		lista.setValor(2,1337);
+		lista.agregarEnPosicion(2,1337);
 		System.out.println(lista);
 
 		lista.setValor(200,1337);
