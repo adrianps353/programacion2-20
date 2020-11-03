@@ -104,14 +104,8 @@ public class ListaSimplementeEnlazada{
 		// Uno al medio
 		// Elemento final
 		else if (posicion > 0 && this.primero != null){
-			// Debemos encontrar el anterior (nodo)
-			int posicionActual = 0;
-			Nodo actual = this.primero;
-			while(actual != null && posicionActual + 1 != posicion){
-				posicionActual++;
-				actual = actual.siguiente;
-			}	
-			if (actual != null && posicionActual+1 == posicion){
+			Nodo actual = this.buscarAnterior(posicion);
+			if (actual != null){
 				Nodo nuevo = new Nodo(valor);
 				Nodo anterior = actual;
 				nuevo.siguiente = anterior.siguiente;
@@ -122,12 +116,52 @@ public class ListaSimplementeEnlazada{
 		return insertado;
 	}
 
+	public Nodo buscarAnterior(int posicion){
+		int posicionActual = 0;
+		Nodo actual = this.primero;
+		while(posicionActual + 1 != posicion && actual != null){
+			posicionActual++;
+			actual = actual.siguiente;
+		}
+		return actual;
+	}
+
 	public boolean borrar (int posicion){
 		//Casos para borrar nodo:
 		// Si es el primer elemento (0) -> hay que actualizar el puntero al inicio
 		// Si es un nodo intermedio
 		// Si es un nodo final
-		return false;
+		boolean borrado = false;
+		if (posicion >= 0 && this.primero != null){
+			if (posicion == 0){
+				// primer elemento
+				Nodo temporal = this.primero;
+				this.primero = this.primero.siguiente;
+				temporal.siguiente = null;
+				temporal = null;
+				borrado = true;
+			}
+			else{
+				Nodo actual = this.buscarAnterior(posicion);
+				if (actual != null){
+					Nodo borrar = actual.siguiente;
+					if(borrar.siguiente == null){
+						// ultimo
+						actual.siguiente = null;
+						borrar = null;
+						borrado = true;
+					}
+					else{
+						// nodo intermedio
+						actual.siguiente = borrar.siguiente;
+						borrar.siguiente =null;
+						borrar = null;
+						borrado = true;
+					}
+				}
+			}
+		}
+		return borrado;
 	}
 
 	public static void main (String [] args){
@@ -147,6 +181,18 @@ public class ListaSimplementeEnlazada{
 		System.out.println(lista);
 
 		lista.setValor(200,1337);
+
+		lista.borrar(0);
+		System.out.println(lista);
+
+		lista.borrar(5);
+		System.out.println(lista);
+
+		lista.borrar(1);
+		System.out.println(lista);
+
+		lista.agregarAlFinal(8);
+		System.out.println(lista);
 
 	}
 
