@@ -67,13 +67,13 @@ public class ListaDoblementeEnlazada{
 		Nodo actual = this.cabeza;
 		boolean asignado = false;
 
-		if(posicion >= 0){
+		if(posicion >= 0){ // Entre si la posicion existe en la lista
 			while(actual != null && posicionActual != posicion){
 				actual = actual.siguiente;
 				posicionActual++;
 			}
 			if (actual != null){
-				if(actual == cola){
+				if(actual == cola){ // 
 					agregarAlFinal(valor);
 					asignado = true;
 				}else{
@@ -115,7 +115,7 @@ public class ListaDoblementeEnlazada{
 					colaVieja.anterior = null;
 					colaVieja = null;
 				}
-				else{ // borrado en demas posiciones
+				else{ // borrado en demás posiciones
 					Nodo actualViejo = actual; 
 					actualViejo.anterior.siguiente = actualViejo.siguiente;
 					actualViejo.siguiente.anterior = actualViejo.anterior;
@@ -156,17 +156,20 @@ public class ListaDoblementeEnlazada{
 
 	public static void main(String args[]){
 		ListaDoblementeEnlazada lista = new ListaDoblementeEnlazada();
+		//lista.agregarAlFinal(1);
 		lista.agregarAlFinal(1);
+		lista.agregarAlFinal(2);
 		lista.agregarAlFinal(3);
+		lista.agregarAlFinal(4);
 		lista.agregarAlFinal(5);
+		lista.agregarAlFinal(6);
 		lista.agregarAlFinal(7);
-		lista.agregarAlFinal(12);
-		lista.agregarElemento(3,9);
 
 		System.out.println( lista.imprimirDesdeCabeza()+"\n");
 
-		System.out.println("Elementos borrados: " + lista.eliminarElemento(12));
+		System.out.println("Elementos borrados: " + lista.eliminarElemento(3));
 
 		System.out.println( lista.imprimirDesdeCabeza()+"\n");
+		System.out.println( lista.imprimirDesdeCola()+"\n");
 	}	
 }
